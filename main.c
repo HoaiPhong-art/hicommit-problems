@@ -5,18 +5,18 @@ int main() {
     int n;
     cin >> n;
 
-    // Khởi tạo mảng lưu các số Fibonacci
-    long long f[45];
-    f[1] = 1;
-    f[2] = 1;
-
-    // Tính dần từ F_3 đến F_n
-    for (int i = 3; i <= n; i++) {
-        f[i] = f[i - 1] + f[i - 2];
+    if (n == 1 || n == 2) {
+        cout << 1 << endl;
+        return 0;
     }
 
-    // In ra kết quả
-    cout << f[n] << endl;
+    long long a = 1, b = 1, c;
+    for (int i = 3; i <= n; i++) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
 
+    cout << b << endl;
     return 0;
 }
