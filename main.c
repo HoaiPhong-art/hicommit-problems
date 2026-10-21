@@ -1,25 +1,33 @@
 #include <stdio.h>
 
 int main() {
-  float d; // khoảng cách giao hàng (km)
-  double phi_giao_hang = 0;
+    long long distance, order_value;
 
-  // nhập khoảng cách
-  scanf ("%f", &d);
-  if (d <= 0) {
-    printf ("khoang cach khong hop le!\n");
+    // Nhap 2 so nguyen distance va order_value
+    if (scanf("%lld %lld", &distance, &order_value) != 2) {
+        return 0;
+    }
+
+    // 1. Kiem tra du lieu khong hop le
+    if (distance <= 0 || order_value <= 0) {
+        printf("INVALID\n");
+        return 0;
+    }
+
+    // 2. Kiem tra dieu kien mien phi giao hang
+    if (order_value >= 500000 && distance <= 15) {
+        printf("0\n");
+        return 0;
+    }
+
+    // 3. Tinh phi giao hang theo cac muc
+    if (distance <= 5) {
+        printf("15000\n");
+    } else if (distance <= 15) {
+        printf("25000\n");
+    } else {
+        printf("40000\n");
+    }
+
     return 0;
-    
-  }
-  if (d <= 1 ){
-    phi_giao_hang = 15000;
-    
-  } else if ( d<=10) {
-     phi_giao_hang = 15000+ (d-1)* 10000;
-  }else{
-    phi_giao_hang = 15000+9*10000+ (d-10)* 8000;
-  }
-    // in ra kết quả phí giao hàng ( lấy dạng số nguyên)
-  printf("%.0lf\n", phi_giao_hang);
-  return 0;
 }
